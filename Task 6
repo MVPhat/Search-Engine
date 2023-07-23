@@ -1,0 +1,11 @@
+bool specialCase6(string& fileName)// fillter2->ko lien quan chi la xet ten file
+{
+	for (int i = fileName.size() - 1; i >= fileName.size() - 4; i--)
+	{
+		if (fileName[fileName.size() - 1] != 't' || fileName[fileName.size() - 2] != 'x' || fileName[fileName.size() - 3] != 't' || fileName[fileName.size() - 4] != '.')
+		{
+			return false;
+		}
+	}
+	return true;
+}

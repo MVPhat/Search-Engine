@@ -1,0 +1,4 @@
+﻿  ASCII.cpp
+C:\Users\PHAT\source\repos\Trie\ASCII_Table\ASCII.cpp(4,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PHAT\source\repos\Trie\ASCII_Table\ASCII.cpp(5,25): warning C4018: '<': signed/unsigned mismatch
+  ASCII_Table.vcxproj -> C:\Users\PHAT\source\repos\Trie\Debug\ASCII_Table.exe

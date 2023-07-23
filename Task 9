@@ -1,0 +1,160 @@
+bool inputIndex(Node* root, string s, vector<int>& sortList, string nameOfFile)// input vi tri string vo vector sortList
+{
+	filter(s);
+	if (root == nullptr)
+	{
+		return false;
+	}
+	else
+	{
+		Node* pCur = nullptr;
+		pCur = root;
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (pCur->child[s[i]] == nullptr)
+			{
+				return false;
+			}
+			else
+			{
+				pCur = pCur->child[s[i]];
+			}
+		}
+		if (pCur != nullptr)
+		{
+			if (pCur->endOfNode == true)
+			{
+				for (int i = 0; i < pCur->position[nameOfFile].size(); i++)
+					sortList.push_back(pCur->position[nameOfFile][i]);
+				return true;
+			}
+			else
+				return false;
+		}
+		return false;
+	}
+}
+bool searchString(Node* root, string s, string nameOfFile)
+{
+	filter(s);
+	if (root == nullptr)
+	{
+		return false;
+	}
+	else
+	{
+		Node* pCur = nullptr;
+		pCur = root;
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (pCur->child[s[i]] == nullptr)
+			{
+				return false;
+			}
+			else
+			{
+				pCur = pCur->child[s[i]];
+			}
+		}
+		if (pCur != nullptr)
+		{
+			if (pCur->endOfNode == true)
+			{
+				return true;
+			}
+			else
+				return false;
+		}
+		return false;
+	}
+}
+bool specialCase9_ss2(vector<int> sortList,int count)
+{
+	for (int i = 0; i+1 < sortList.size(); i++)
+	{
+		if (sortList[i + 1] - sortList[i] == 1)
+		{
+			int newCount = count-1;
+			for (int j = i; j+1 < sortList.size(); j++)
+			{
+				if (sortList[j + 1] - sortList[j] == 1)
+				{
+					newCount--;
+				}
+				if (sortList[j + 1] - sortList[j] != 1 && sortList[j + 1] - sortList[j] != 0)
+				{
+					break;
+				}
+				if (newCount == 0)
+				{
+					return true;
+				}
+			}
+			
+		}
+	}
+	return false;
+}
+bool specialCase9_ss1(Node* root, string importantString, string nameOfFile)
+{
+	vector<int> sortList;
+	stringstream InformationOfUser;
+	InformationOfUser.str(importantString);
+	string Tmp;
+	int count2 = 0;// dem so string co trong " "
+	int count = 0;// dem so string co trong " " nhung ton tai trong trie 
+	while (!InformationOfUser.eof())
+	{
+		InformationOfUser >> Tmp;
+		if (inputIndex(root, Tmp, sortList, nameOfFile) == true)
+		{
+			count++;
+		}
+		count2++;
+	}
+	if (count != count2)
+	{
+		return false;
+	}
+	if (count == 0)
+	{
+		return false;
+	}
+	if (count == 1)
+	{
+		if (searchString(root, importantString, nameOfFile) == true)
+		{
+			return true;
+		}
+		return false;
+	}
+	sort(sortList.begin(), sortList.end());
+	{
+		if (specialCase9_ss2(sortList, count) == true)
+		{
+			return true;
+		}
+		return false;
+	}
+
+}
+string specialCase9(string userInput, string fileName, Node* root)
+{
+	string importantString = {};
+	for (int i = 1; i < userInput.size() - 1; i++)
+	{
+		importantString += userInput[i];
+	}
+	while (importantString[importantString.size() - 1] == ' ')
+	{
+		importantString.pop_back();
+	}
+	if (specialCase9_ss1(root, importantString, fileName) == true)
+	{
+		return fileName;
+	}
+	else
+	{
+		return "can't find!";
+	}
+}

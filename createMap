@@ -1,0 +1,16 @@
+void createMap(map<string, int>& result)
+{
+	ifstream in;
+	in.open("NameOfFile.txt");
+	if (in)
+	{
+		while (!in.eof())
+		{
+			string Tmp;
+			in >> Tmp;
+			result[Tmp] = 0;
+			
+		}
+	}
+	in.close();
+}

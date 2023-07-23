@@ -1,0 +1,8 @@
+﻿  Trie.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\PHAT\source\repos\Trie\Trie\Trie.cpp(39,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PHAT\source\repos\Trie\Trie\Trie.cpp(72,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PHAT\source\repos\Trie\Trie\Trie.cpp(109,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PHAT\source\repos\Trie\Trie\Trie.cpp(161,6): error C3861: 'wildcards': identifier not found
+C:\Users\PHAT\source\repos\Trie\Trie\Trie.cpp(167,13): error C2561: 'wildcards': function must return a value
+C:\Users\PHAT\source\repos\Trie\Trie\Trie.cpp(166): message : see declaration of 'wildcards'

@@ -1,0 +1,239 @@
+void mainSearch(string userInput, map<string, int>& result, Node* root, Node* stopWord, Title* newRoot, vector<string>& history,History*& rootHis)
+{
+	writeHistory(userInput, history);
+	insertHistory(rootHis, userInput);
+	filter(userInput);
+	stringstream filter1;
+	stringstream filter0;
+	string newAnd = {};
+	string newOr = {};
+	string newOpe = {};
+	string newString = {};
+	filter0.str(userInput);
+	vector<string> putString;
+	while (!filter0.eof())
+	{
+		string word0;
+		filter0 >> word0;
+		putString.push_back(word0);
+	}
+	for (int i = 0; i + 1 < putString.size(); i++)
+	{// Op1 : 
+		if (putString[i] == "and")
+		{
+			newAnd += putString[i - 1] + " " + putString[i] + " " + putString[i + 1];
+			if (i+2<putString.size() && (putString[i + 2] == "or" || putString[i + 2] == "and"))
+			{
+				putString.erase(putString.begin() + i - 1);
+				putString.erase(putString.begin() + i - 1);
+			}
+			else
+			{
+				putString.erase(putString.begin() + i - 1);
+				putString.erase(putString.begin() + i - 1);
+				putString.erase(putString.begin() + i - 1);
+			}
+			searchAND(root, newAnd, result);
+
+		}
+		// Op2 :
+		else if (putString[i] == "or")
+		{
+			newOr += putString[i - 1] + " " + putString[i] + " " + putString[i + 1];
+			if (i + 2 < putString.size() && (putString[i + 2] == "or" || putString[i + 2] == "and"))
+			{
+				putString.erase(putString.begin() + i - 1);
+				putString.erase(putString.begin() + i - 1);
+			}
+			else
+			{
+				putString.erase(putString.begin() + i - 1);
+				putString.erase(putString.begin() + i - 1);
+				putString.erase(putString.begin() + i - 1);
+			}
+			SearchOR(root, newOr, result);
+		}
+	}
+	int isTrue = 1;
+	int key = 0;
+	// Op3 :
+	for (int i = 0; i < putString.size(); i++)
+	{
+		if (putString[i] == "*")
+		{
+			key = 1;
+		}
+		for (int j = 0; j + 3 < putString[i].size(); j++)
+		{
+			if (putString[i][j] != putString[i][j + 1] && putString[i][j + 1] == '.' && putString[i][j + 1] == putString[i][j + 2] && putString[i][j + 2] != putString[i][j + 3])
+			{
+				newOpe = putString[i];
+				searchRange(root, newOpe, result);
+				isTrue = 0;
+			}
+		}
+		if (isTrue != 0)
+		{
+			newString += putString[i] + " ";
+		}
+		isTrue = 1;
+	}
+	if (newString == "")
+	{
+		return;
+	}
+	if (key == 1)
+	{
+		saveope10(root, newString, result);
+		return;
+	}
+	while (newString.size() > 0 && newString[newString.size() - 1] == ' ')
+	{
+		newString.pop_back();
+	}
+	vector<string> normal;
+	vector<string> stopWordList;
+	vector<string> plusAndMinos;
+	string Tmp = "";
+	filter1.str(newString);
+	while (!filter1.eof())
+	{
+		string word;
+		filter1 >> word;
+		// Op4 :
+		if (word.size() > 8)
+		{
+			Tmp = "";
+			for (int i = 0; i <= 8; i++)
+			{
+				Tmp += word[i];
+			}
+			if (Tmp == "filetype:")
+			{
+				Tmp = "";
+				Tmp += word + " ";
+				while (!filter1.eof())
+				{
+					filter1 >> word;
+					Tmp += word + " ";
+				}
+				while (Tmp[Tmp.size() - 1] == ' ')
+				{
+					Tmp.pop_back();
+				}
+				SearchType(newRoot, Tmp, result);// phai la Title
+				return;
+			}
+		}
+	 if (word.size() > 7)
+		{
+			Tmp = "";
+			for (int i = 0; i <= 7; i++)
+			{
+				Tmp += word[i];
+			}
+			if (Tmp == "intitle:")
+			{
+				Tmp = "";
+				Tmp += word + " ";
+				while (!filter1.eof())
+				{
+					filter1 >> word;
+					Tmp += word + " ";
+				}
+				while (Tmp[Tmp.size() - 1] == ' ')
+				{
+					Tmp.pop_back();
+				}
+				searchIntitle(newRoot, Tmp, result);// phai la Title
+				return;
+			}
+		}
+		else if (searchString(stopWord, word) == true)
+		{
+			stopWordList.push_back(word);
+		}
+		//Op 5:
+		else if (word[0] == '-')
+		{
+			plusAndMinos.push_back(word);
+		}
+		//Op 6:
+		else if (word[0] == '+')
+		{
+			plusAndMinos.push_back(word);
+		}
+		//Op 7:
+		else if (word[0] == '"')
+		{
+			Tmp = "";
+			Tmp += word + " ";
+			while (!filter1.eof() && word[word.size() - 1] != '"')
+			{
+				filter1 >> word;
+				Tmp += word + " ";
+			}
+			while (Tmp[Tmp.size() - 1] == ' ')
+			{
+				Tmp.pop_back();
+			}
+			searchExactMatch(root, Tmp, result);
+		}
+		//Op 8:
+		else if (word[0] == '#')
+		{
+			searchHashtag(root, word, result);
+		}
+		//Op 9:
+		else if (word[0] == '$')
+		{
+			searchprice(root, word, result);
+		}
+		else if (word[0] == '~')
+		{
+			searchSynonym( root, word, result);
+		}
+		else
+		{
+			normal.push_back(word);
+		}
+	}
+	if (normal.size() == 2)
+	{
+		string fast = normal[0] +" or "+normal[1];
+		SearchOR(root, fast, result);
+	}
+	else
+	{
+		for (int i = 0; i < normal.size(); i++)
+		{
+			searchString2(root, normal[i], result);
+		}
+	}
+	int count = 0;
+	for (auto i = result.begin(); i != result.end(); i++)
+	{
+		if (i->second != 0)
+		{
+			count++;
+		}
+	}
+	if (count < 4)
+	{
+		for (int i = 0; i < stopWordList.size(); i++)
+		{
+			searchString2(stopWord, stopWordList[i], result);
+		}
+	}
+	for (int i = 0; i < plusAndMinos.size(); i++)
+	{
+		if (plusAndMinos[i][0] == '-')
+		{
+			specialCase3(plusAndMinos[i], root, result);
+		}
+		if (plusAndMinos[i][0] == '+')
+		{
+			SearchPlus(root, plusAndMinos[i], result);
+		}
+	}
+}

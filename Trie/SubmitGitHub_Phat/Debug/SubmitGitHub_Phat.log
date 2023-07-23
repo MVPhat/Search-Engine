@@ -1,0 +1,28 @@
+﻿  PhatSourceCode.cpp
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(3,6): error C2182: 'searchwildcards': illegal use of type 'void'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(3,22): error C2065: 'Node': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(3,28): error C2065: 'root': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(3,34): error C2065: 'string': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(3,41): error C2146: syntax error: missing ')' before identifier 's'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(3,70): error C2143: syntax error: missing ';' before '{'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(3,70): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(28,6): error C2182: 'removeDuplicated': illegal use of type 'void'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(28,23): error C2065: 'vector': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(28,30): error C2065: 'string': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(28,39): error C2065: 'filename': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(28,49): error C2143: syntax error: missing ';' before '{'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(28,49): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(38,6): error C2182: 'searchInfileName': illegal use of type 'void'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(38,23): error C2065: 'Node': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(38,29): error C2065: 'root': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(38,35): error C2065: 'string': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(38,42): error C2146: syntax error: missing ')' before identifier 'before'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(38,91): error C2143: syntax error: missing ';' before '{'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(38,91): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(92,6): error C2182: 'findFilename': illegal use of type 'void'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(92,19): error C2065: 'Node': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(92,25): error C2065: 'root': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(92,31): error C2065: 'string': undeclared identifier
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(92,38): error C2146: syntax error: missing ')' before identifier 'before'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(92,86): error C2143: syntax error: missing ';' before '{'
+C:\Users\PHAT\source\repos\Trie\SubmitGitHub_Phat\PhatSourceCode.cpp(92,86): error C2447: '{': missing function header (old-style formal list?)

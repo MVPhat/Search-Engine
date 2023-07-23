@@ -1,0 +1,20 @@
+bool specialCase3(string userInput,string fileName,Node* root)// userInput phai la : -abcde, neu tim thay abcd trong file thi tra ve false, neu false thi khong tim o file do nua
+{
+	string newString = {};
+	if (userInput.size() == 1)
+	{
+		return true;
+	}
+	else
+	{
+		for (int i = 1; i < userInput.size(); i++)
+		{
+			newString += userInput[i];
+		}
+	}
+	if (searchString(root, newString, fileName) == true)
+	{
+		return false;
+	}
+	return true;
+}
